@@ -16,6 +16,11 @@
 	- Accessing values inside a struct pointer
 2. Generic Pointer
 3. Pass by Reference
+4. Constant pointer
+5. Pointer to a constant 
+6. Pointer to pointer
+7. Function Pointer 
+
 ### 1. Basics
 - Variable that holds the address of another `Variable`
 #example
@@ -165,7 +170,8 @@ int main() {
 
 
 
-## Advanced
+# Advanced
+
 ### 3. Pass by Reference
 
 ```cpp
@@ -187,6 +193,107 @@ Value: 10
 #explenation
 - The `print_value` expects a integer pointer 
 - in `print_value(&value)` we pass the address of the variable `value`
+
+## 4. Constant pointer
+*the address that is pointing to, cannot be changed*
+#syntax 
+```cpp
+<type-of-pointer> *const <name-of-pointer>
+```
+{ #de91e5}
+
+
+```cpp
+char x = 'x' ;
+char *const ptr = &x; 
+```
+Assigning new value to that pointer will result in error as the following
+```cpp
+#include <stdio.h>
+
+int main() {
+    char x = 'x';
+    char *const ptr = &x; 
+    char y = 'y';
+    ptr = &y;  // this will throw an error like "variable 'ptr' declared const here"
+}
+```
+
+> the following is possible 
+```cpp
+#include <stdio.h>
+
+int main() {
+    char x = 'x';
+    char *const ptr = &x; 
+    *ptr = 'y';
+    printf("x is now : %c\n", x);
+}
+```
+```op 
+x is now:  y
+```
+
+```cpp
+#include <stdio.h>
+
+int main() {
+    char x = 'x';
+    char *const ptr = &x; 
+    char y = 'y';
+    ptr = &y;  // not possible 
+    *ptr = 'z'; // possible 
+}
+```
+## 5. Pointer to a contant 
+*pointer cannot change the value at the address pointed by it*
+```cpp
+const <type-of-pointer> *<name-of-pointer>;
+```
+
+if we compare this with ![[#^de91e5]]
+#example 
+```cpp
+#include<stdio.h>
+
+int main(void)
+{
+    char ch = 'c';
+    const char *ptr = &ch;
+    ch = 'a'; // possible 
+    *ptr = 'b' ; // not possible 
+    return 0;
+}
+```
+
+## 6. Pointer to pointer
+You will have to dereference[^1] it twise 
+
+[^1]:accessing the value stored at the memory address that the pointer is holding
+
+```cpp
+#include <stdio.h> 
+
+int main(){
+    char x = 'x';
+    char *ptr = &x;
+    char **ptr_to_ptr = &ptr; 
+    printf("Value of x: %c " , **ptr_to_ptr); 
+}
+```
+
+## 7. Function Pointer
+```cpp
+#include <stdio.h>
+void print_sum(int a, int b) {
+    printf("Sum: %d\n", a + b);
+}
+int main() {
+    void (*func_ptr)(int, int) = print_sum; 
+    func_ptr(5, 10); 
+    return 0;
+}
+```
 ## References
 
 1. [Source 1](https://embetronicx.com/tutorials/p_language/c/pointers_2/)
