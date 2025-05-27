@@ -8,11 +8,15 @@
 - [[02 Academics/Btech/S6/Embedded Systems/Module 2/Memory\|Memory]]
 **Used In**
 - [[03 Coding/Data Structures and Algorithms/Linked List\|Linked List]]
-
-**Contents **
-- [[#Basics]]
-- [[03 Coding/01 C/Null Pointer\|Null Pointer]]
-- [[Pointer to Pointer\|Pointer to Pointer]]
+**Contents**
+1. Basics 
+	- pointer to an Array
+	- Accessing Next variable
+	- Dynamically allocating memory
+	- Accessing values inside a struct pointer
+2. Generic Pointer
+3. Pass by Reference
+### 1. Basics
 - Variable that holds the address of another `Variable`
 #example
 ```c
@@ -25,7 +29,6 @@ int value = *x ;  // get value of the variable the x point to
 int address = x ; // get the address of the variable the x point to
 ```
 
-### Basics
 
 ```c
 #include <stdio.h>
@@ -41,7 +44,6 @@ int main(){
 10  // Value of k
 */
 ```
-
 #### Pointer to an array
 
 ```c
@@ -118,8 +120,10 @@ int main(){
     printf(ptr->value == s.value ? "True" : "False");
 }
 ```
+```op
+True
+```
 
-#correctCode
 ```c
 #include <stdio.h>
 #include <stdlib.h>
@@ -139,7 +143,7 @@ int main(int argc, char *argv[]) {
 
 
 
-### Generic Pointer
+### 2. Generic Pointer
 
 It has a `void` datatype
 
@@ -162,7 +166,7 @@ int main() {
 
 
 ## Advanced
-#### Pass by Reference
+### 3. Pass by Reference
 
 ```cpp
 #include <stdio.h>
@@ -187,4 +191,3 @@ Value: 10
 
 1. [Source 1](https://embetronicx.com/tutorials/p_language/c/pointers_2/)
 2. [Source 2](https://www.cs.cmu.edu/~ab/15-123N09/lectures/Lecture%2005%20-%20Advanced%20pointers.pdf) PDF
-3.
