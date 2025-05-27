@@ -6,11 +6,13 @@
 # Pointers
 **Prerequisites**:
 - [[02 Academics/Btech/S6/Embedded Systems/Module 2/Memory\|Memory]]
+**Used In**
+- [[03 Coding/Data Structures and Algorithms/Linked List\|Linked List]]
 
 **Contents **
 - [[#Basics]]
 - [[03 Coding/01 C/Null Pointer\|Null Pointer]]
-- [[03 Coding/01 C/Pointer to Pointer\|Pointer to Pointer]]
+- [[Pointer to Pointer\|Pointer to Pointer]]
 - Variable that holds the address of another `Variable`
 #example
 ```c
@@ -24,7 +26,6 @@ int address = x ; // get the address of the variable the x point to
 ```
 
 ### Basics
-
 
 ```c
 #include <stdio.h>
@@ -159,6 +160,29 @@ int main() {
 
 
 
+
+## Advanced
+#### Pass by Reference
+
+```cpp
+#include <stdio.h>
+
+void print_value(int *x) {
+    printf("Value: %d\n", *x);
+}
+
+int main(){
+    int value = 10;
+    print_value(&value);
+    return 0;
+}
+```
+```op
+Value: 10
+```
+#explenation
+- The `print_value` expects a integer pointer 
+- in `print_value(&value)` we pass the address of the variable `value`
 ## References
 
 1. [Source 1](https://embetronicx.com/tutorials/p_language/c/pointers_2/)
