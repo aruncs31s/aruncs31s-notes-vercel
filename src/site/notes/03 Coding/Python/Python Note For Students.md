@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/03 Coding/Python/Python Note For Students/"}
+{"dg-publish":true,"permalink":"/03-coding/python/python-note-for-students/"}
 ---
 
 # Python Note For Students
@@ -36,7 +36,6 @@ python first_program.py
 
 ## Input/Output
 
-
 <div class="transclusion internal-embed is-loaded"><div class="markdown-embed">
 
 <div class="markdown-embed-title">
@@ -53,6 +52,8 @@ print("Hi " + name);
 ```
 
 </div></div>
+
+
 
 
 
