@@ -36,6 +36,7 @@ python first_program.py
 
 ## Input/Output
 
+
 <div class="transclusion internal-embed is-loaded"><div class="markdown-embed">
 
 <div class="markdown-embed-title">
@@ -54,7 +55,12 @@ print("Hi " + name);
 </div></div>
 
 
+- This is simple enugh but here just one thing to note is that 
 
 
-
- 
+Wha
+```python
+number=input("Enter a Number")
+if(number == 5):
+	print("Number is 5")
+```
