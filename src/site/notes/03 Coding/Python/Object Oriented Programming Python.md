@@ -6,6 +6,44 @@
 
 *This will be entirely focused on object oriented python.*
 
+>[!info]- What is Object Oriented Programming?
+>In treats real-world entities as objects and groups related data and functionality together. In traditional programming languages like [[03 Coding/01 C/C\|C]] the data and functions are seperate and treated differently but in OOP they are grouped together as objects. 
+
+>[!info]- Why Object Oriented Programming?
+>In my personal opinion when dealing with real word entities or *things* in general oop makes so much sense. Consider the following 
+>You have these functions  
+>```c
+>int get_age();
+>string get_name();
+>void get_date_of_birth();
+>void print_details();
+>```
+>In functional programming languages like **C** you will pass a reference to a struct , which will be like follows
+>```c
+>struct Person {
+>	int age;
+>	string name;
+>	string place_of_birth;
+>	date date_of_birth;
+>};
+>```
+>In **C** you will do like 
+>```c
+>get_name(&person1)
+>get_age(&person1)
+>get_date_of_birth(&person1)
+>print_details(&person1)
+>```
+>And in oop we do something like, trust me dealing with pointers is hard for starters
+>```python
+>person.get_name()
+>person.get_age()
+>person.get_date_of_birth()
+>person.print_details()
+>```
+>Using functional language with something to group together data like `struct` is great but some like to group functions too like c++ structs which allows to pack functions too. . and i do like the features comes with Object Oriented Programming like **inheritance**, **polymorphism** etc. Which makes sense and updating the codebase much easier. You can always change the logic of the function without changing the interface. It is possible in functional programming languages too but it is not as easy as in OOP.
+
+
 **Class**: Is a blueprint for creating objects
 **Object**: Is an instance of a class
 
@@ -115,7 +153,18 @@ See , the `__init__` is just like a regular function and it can call another fun
 
 ### `__str__` Method
 The `__str__` method is a special method in Python that is used to define a string representation of an object. When you call `print()` on an object, Python will automatically call the `__str__` method to get the string representation of that object.
+First try running this
+```python
+print(P1)
+```
+>[!success]- **Output**
+>```
+><__main__.Person object at 0x7bc68371da90>
+>```
 
+you will get something like `<__main__.Person object at 0x7bc68371da90>` but what if you can get something helpfull by printing the object itself. 
+
+Now check this code.
 #completeCode
 ```python
 class Person:
@@ -128,7 +177,20 @@ Arun = Person("Arun", 23)
 print(Arun) 
 ```
 
->[!Abstract]- **Output**
+>[!success]- **Output**
 > ```
 > Person Name: Arun
 >```
+
+Here we have defined a `__str__` method which returns a string when called. 
+
+[^1]: parent class in the sense that from where it is inheriting. 
+
+## Inheritance
+As the name says it **inherits** the attributes and methods of the parent class.[^1]
+>[!question]- **Why**
+> Because it is like the inheritance in the realworld and makes sense. Like a real chile often inherits the properties of the parent. if not consider money as a property , their chile will inherit the money too.😅
+
+#example  
+
+
