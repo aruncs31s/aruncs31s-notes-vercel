@@ -4,6 +4,11 @@
 
 # Python Note For Students
  *Note #for_students* 
+ **Derived From** 
+ - [[02 Academics/Btech/S7/Python For Engineers/Class Notes\|Class Notes]]
+ - [[02 Academics/Btech/S7/Python For Engineers/CST445 Module 1\|CST445 Module 1]]
+ - [[03 Coding/Python/python\|python]]
+
 **Should Contain**
 -  [ ] Simple intro
 -  Basics
@@ -20,7 +25,7 @@
 	- [x] Inheritance ✅ 2025-05-30
 	- [x] Polymorphism ✅ 2025-05-30
 	- [x] Abstraction ✅ 2025-05-30
-	- 
+	- En..
 
 ## First Program
 
