@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/03-coding/python/object-oriented-programming-python/"}
+{"dg-publish":true,"permalink":"/03-coding/python/object-oriented-programming-python/","created":"2025-05-31T00:55:39.954+05:30","updated":"2025-05-31T04:07:35.346+05:30"}
 ---
 
 # Object Oriented Programming Python
@@ -234,9 +234,9 @@ mindmap
 	root((🦁 Animal))
 		{{Name}}
 		)😺 Cat(
-			(meow)
+			(😸 meow)
 		)🐶 Dog(
-			(bark)
+			(🦮 bark)
 			))🐕‍🦺 German Sheperd((
 				(🔎search)
 				(🚑rescue)
@@ -293,4 +293,3 @@ Buddy.rescue()
 >Buddy is Searching!
 >Buddy is Rescuing!
 >```
-
