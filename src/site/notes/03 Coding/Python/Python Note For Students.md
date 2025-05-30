@@ -12,7 +12,15 @@
 	- [x] Control Statements ✅ 2025-05-30
 	- [x] Functions ✅ 2025-05-30
 	- [ ] Scope 
-
+	- [x] Strings ✅ 2025-05-30
+	- [x] Lists ✅ 2025-05-30
+	- [x] Dictionaries ✅ 2025-05-30
+	- [x] Set ✅ 2025-05-30
+- OOP 
+	- [x] Inheritance ✅ 2025-05-30
+	- [x] Polymorphism ✅ 2025-05-30
+	- [x] Abstraction ✅ 2025-05-30
+	- 
 
 ## First Program
 
@@ -969,6 +977,173 @@ meg = Student("meg", 32)
 n.dataprint()
 meg.dataprint()
 ```
+
+
+</div></div>
+
+
+
+### Polymorphism And Abstract Classes
+
+<div class="transclusion internal-embed is-loaded"><a class="markdown-embed-link" href="/02-academics/btech/s7/python-for-engineers/class-notes/#2024-10-05" aria-label="Open link"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon lucide-link"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a><div class="markdown-embed">
+
+<div class="markdown-embed-title">
+
+# Class Notes
+
+</div>
+
+
+#### 2024-10-05
+
+##### PolyMorphism
+*behave differently based on the type of data they are handling*
+
+- Function Overloading: Same name but performs different operations
+
+```python
+class Shape:
+    def area(self):
+        pass
+
+class Rectangle(Shape):
+    def __init__(self, length, width):
+        self.length = length
+        self.width = width
+
+    def area(self):
+        return self.length * self.width
+
+class Circle(Shape):
+    def __init__(self, radius):
+        self.radius = radius
+
+    def area(self):
+        return 3.14 * self.radius ** 2
+
+R1 = Rectangle(1,2) 
+C1 = Circle(2)
+print(f"Area of rectangle:  {R1.area()}")
+print(f"Area of Circle : {C1.area()}")
+```
+
+- Operator Overloading: Same operator does diffrent things
+
+```python
+int(a) + int(b) = int # addition
+str(a) + str(a) = str # Contcatination
+```
+
+```python
+print(5 + 5 ) # addition 
+print("Hello" + " World!") # Concatination
+```
+
+##### Abstract Class
+
+_if a class contains abstract method then it is called as abstract class_
+
+```python
+from abc import ABC, abstractmethod
+class Shape:
+	@abstractmethod
+    def area(self):
+        pass
+class Circle(Shape):
+	def area(self):
+		return 3.14 * self.radius ** 2 
+```
+
+```python
+from abc import ABC, abstractmethod
+class Shape:
+	@abstractmethod
+	def area(self):
+		pass
+class Circle(Shape):
+	def __init__(self,radius):
+		self.radius = radius
+	def area(self):
+		return 3.14 * self.radius ** 2 
+C1 = Circle(2)
+print(f"Area is  {C1.area()}")
+
+```
+
+```python
+from abc import ABC, abstractmethod
+class Shape:
+	@abstractmethod
+	def area(self):
+		pass
+class Circle(Shape):
+	def __init__(self,radius):
+		self.radius = radius
+	def sqr_area(self):
+		return (3.14 * self.radius ** 2) ** 2
+C1 = Circle(2)
+print(f"Area is ", {C1.sqr_area()})
+```
+*Some source says that this programm will not work because we havent yet defined `area()` which is a abstract method but this exceutes just fine #doYourOwnReasearch* 
+
+
+</div></div>
+
+
+
+## Exception
+
+<div class="transclusion internal-embed is-loaded"><a class="markdown-embed-link" href="/02-academics/btech/s7/python-for-engineers/class-notes/#exception" aria-label="Open link"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon lucide-link"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a><div class="markdown-embed">
+
+<div class="markdown-embed-title">
+
+# Class Notes
+
+</div>
+
+
+#### Exception
+
+- [[#Type error Exception]]
+- [[#Name error Exception]]
+- [[#Exception Handling]]
+
+##### Type error Exception
+
+_Type error occurs when the type of the variable is not correct_
+
+##### Name error Exception
+
+_Name error occurs when the variable is not defined_
+
+##### Exception Handling
+
+#example
+
+```python
+try:
+    <Statement>
+except <exception type>:
+    <Statement>
+```
+
+#anotherExample
+
+```python
+try:
+    something
+
+except Exception as e:
+    print(f"Error {e}")
+```
+
+###### Multiple Exception Handling
+
+```python
+except (TypeError,ValueError,RuntimError) :
+```
+
+Q: Calculate integer error?
 
 
 </div></div>
