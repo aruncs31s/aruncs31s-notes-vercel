@@ -309,8 +309,40 @@ print("Multiplication = ", multiplication(10, 20))
 
 
 
->[!Note]- 
->Closed Note
+
+
+>[!Note]- Example: Prime or Not
+>
+<div class="transclusion internal-embed is-loaded"><a class="markdown-embed-link" href="/02-academics/btech/s7/python-for-engineers/class-notes/#3cd684" aria-label="Open link"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon lucide-link"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a><div class="markdown-embed">
+
+<div class="markdown-embed-title">
+
+# Class Notes
+
+</div>
+
+
+```python
+# find out given number is prime or not
+staus = 0
+def prime_or_not(number):
+    if number % 2 == 0:
+        print("Number is not prime")
+    else:
+        for i in range(2, number // 2):
+            status = 1
+        if status == 1:
+            print("Number is prime")
+
+
+number = int(input("Enter a number"))
+prime_or_not(number)
+```
+
+</div></div>
+
+
+
 
 
 
