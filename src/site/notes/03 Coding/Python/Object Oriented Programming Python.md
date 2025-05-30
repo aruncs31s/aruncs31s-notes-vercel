@@ -39,7 +39,7 @@ You will learn about `__init__` method in detail below.
 P1.print_age()  # This will print "Age is 23"
 ```
 
-**Complete Program**
+**Complete Program** #completeCode
 ```python
 class Person:
     def __init__(self, name, age):
@@ -66,7 +66,7 @@ def __init__(self, name, age):
 	self.age = age    # Attributes
 ```
 This function will be called when the object is created and it will take `name` and `age` as parameters and assign them to `self.name` and `self.age` respectively. You can do other things too here for example ;
-
+#completeCode
 ```python
 class Rectangle:
 	def __init__(self, length, breadth):
@@ -116,6 +116,7 @@ See , the `__init__` is just like a regular function and it can call another fun
 ### `__str__` Method
 The `__str__` method is a special method in Python that is used to define a string representation of an object. When you call `print()` on an object, Python will automatically call the `__str__` method to get the string representation of that object.
 
+#completeCode
 ```python
 class Person:
 	def __init__(self, name, age):
