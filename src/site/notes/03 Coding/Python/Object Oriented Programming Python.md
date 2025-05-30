@@ -231,15 +231,15 @@ class GermanShepherd(Dog):  # Inherits from Dog
 if we visualize it 
 ```mermaid
 mindmap
-	root((Animal))
+	root((🦁 Animal))
 		{{Name}}
-		)Cat(
+		)😺 Cat(
 			(meow)
-		)Dog(
+		)🐶 Dog(
 			(bark)
-			))GermanShepherd((
-				(search)
-				(rescue)
+			))🐕‍🦺 German Sheperd((
+				(🔎search)
+				(🚑rescue)
     
 ```
 
@@ -247,11 +247,12 @@ and if take the German Sheperd alone it will now have the attribute `name` and m
 
 ```mermaid
 mindmap
-	root((GermanShepherd))
+	root((🐕‍🦺 German
+			shepherd))
 		{{Name}}
-		(bark)
-		(search)
-		(rescue)
+		(🦮 bark)
+		(🔎 search)
+		(🚑 rescue)
 ```
 
 
