@@ -188,9 +188,108 @@ Here we have defined a `__str__` method which returns a string when called.
 
 ## Inheritance
 As the name says it **inherits** the attributes and methods of the parent class.[^1]
+
+
+#syntax 
+```python
+class child_class(parent_class):
+	# code
+```
+
 >[!question]- **Why**
 > Because it is like the inheritance in the realworld and makes sense. Like a real chile often inherits the properties of the parent. if not consider money as a property , their chile will inherit the money too.😅
 
 #example  
+Let say we have a class `Animal` and we want to create a class `Dog` which inherits the properties of `Animal`. and then create a class named `Cat` which inherits the properties of `Animal`.  Then create a new class named `GermanShepherd` which inherits the properties of `Dog`. and according to [this](https://pawsindia.com/pages/german-shepherd) gernal the the `GermanShepherd` is good in search and rescue. 
 
+```python`
+```mermaid
+graph TB
+A[Animal] --inherits--> B[Dog]
+A --inherits--> C[Cat]
+B --inherits--> D[GermanShepherd]
+```
+Now `GrmanShepherd` will have the properties of `Dog` and `Animal`. 
+
+```python
+class Animal:
+	def __init__(self, name):
+			self.name = name
+class Dog(Animal):  # Inherits from Animal
+	def bark(self):
+		print(f"{self.name} Barks!")
+class Cat(Animal):  # Inherits from Animal
+	def meow(self):
+		print(f"{self.name} Meows!")
+class GermanShepherd(Dog):  # Inherits from Dog
+	def search(self):
+		print(f"{self.name} is Searching!")
+	def rescue(self):
+		print(f"{self.name} is Rescuing!")
+```
+
+if we visualize it 
+```mermaid
+mindmap
+	root((Animal))
+		{{Name}}
+		)Cat(
+			(meow)
+		)Dog(
+			(bark)
+			))GermanShepherd((
+				(search)
+				(rescue)
+    
+```
+
+and if take the German Sheperd alone it will now have the attribute `name` and methods `bark`, `search`, and `rescue`. 
+
+```mermaid
+mindmap
+	root((GermanShepherd))
+		{{Name}}
+		(bark)
+		(search)
+		(rescue)
+```
+
+
+at the center we have the `Animal` class and the the `Cat` and `Dog` classes are inheriting the properties of `Animal` class. 
+now we can do things like
+```python
+Buddy = GermanShepherd("Buddy")
+Buddy.bark()  # Buddy Barks!
+Buddy.search()  # Buddy is Searching!
+Buddy.rescue()  # Buddy is Rescuing!
+```
+
+#completeCode 
+```python
+class Animal:
+	def __init__(self, name):
+			self.name = name
+class Dog(Animal):  # Inherits from Animal
+	def bark(self):
+		print(f"{self.name} Barks!")
+class Cat(Animal):  # Inherits from Animal
+	def meow(self):
+		print(f"{self.name} Meows!")
+class GermanShepherd(Dog):  # Inherits from Dog
+	def search(self):
+		print(f"{self.name} is Searching!")
+	def rescue(self):
+		print(f"{self.name} is Rescuing!")
+Buddy = GermanShepherd("Buddy")
+Buddy.bark() 
+Buddy.search() 
+Buddy.rescue()  
+```
+
+>[!success]- **Output**
+>```
+>Buddy Barks!
+>Buddy is Searching!
+>Buddy is Rescuing!
+>```
 
