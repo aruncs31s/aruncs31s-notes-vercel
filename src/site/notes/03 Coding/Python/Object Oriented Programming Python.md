@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/03-coding/python/object-oriented-programming-python/","created":"2025-05-31T00:55:39.954+05:30","updated":"2025-05-31T22:24:34.485+05:30"}
+{"dg-publish":true,"permalink":"/03-coding/python/object-oriented-programming-python/","created":"2025-05-31T00:55:39.954+05:30","updated":"2025-05-31T23:02:43.667+05:30"}
 ---
 
 # Object Oriented Programming Python
@@ -104,7 +104,7 @@ You will learn about `__init__` method in detail below.
 P1.print_age()  # This will print "Age is 23"
 ```
 
-**Complete Program** #completeCode
+#completeCode 1
 ```python
 class Person:
     def __init__(self, name, age):
@@ -256,7 +256,7 @@ def __init__(self, name, age):
 	self.age = age    # Attributes
 ```
 This function will be called when the object is created and it will take `name` and `age` as parameters and assign them to `self.name` and `self.age` respectively. You can do other things too here for example ;
-#completeCode
+#completeCode 2
 ```python
 class Rectangle:
 	def __init__(self, length, breadth):
@@ -317,7 +317,7 @@ print(P1)
 you will get something like `<__main__.Person object at 0x7bc68371da90>` but what if you can get something helpfull by printing the object itself. 
 
 Now check this code.
-#completeCode
+#completeCode 3
 ```python
 class Person:
 	def __init__(self, name, age):
@@ -417,7 +417,7 @@ Buddy.search()  # Buddy is Searching!
 Buddy.rescue()  # Buddy is Rescuing!
 ```
 
-#completeCode 
+#completeCode 4
 ```python
 class Animal:
 	def __init__(self, name):
@@ -453,6 +453,7 @@ Buddy.rescue()
 4. Hierarchical Inheritance: Multiple classes inherit from a single parent class.
 5. Hybrid Inheritance: A combination of two or more types of inheritance.
 #### Single Inheritance
+*A class inherits from one parent class.*
 ```mermaid
 graph TB
 A[A] --> B[B]
@@ -467,6 +468,7 @@ class B(A):
 ```
 
 #### Multiple Inheritance
+*A class inherits from multiple parent classes.*
 ```mermaid
 graph TB
 A & B --> C
@@ -485,6 +487,7 @@ class C(A, B):
 ```
 
 #### Multilevel Inheritance
+ A class inherits from another class which in turn inherits from another class like a --> b --> c.
 ```mermaid
 graph TB
 A --> B --> C
@@ -503,6 +506,7 @@ class C(B):
 ```
 
 #### Hierarchical Inheritance
+*Multiple classes inherit from a single parent class.*
 ```mermaid
 graph TB
 A --> B & C & D
@@ -522,3 +526,196 @@ class D(A):
 	def again_some_method(self):
 		print("Again Some Method")
 ```
+
+#### Hybrid Inheritance
+*A combination of two or more types of inheritance.*
+```mermaid
+graph TB 
+A --> B & C
+B --> D
+C --> E & F
+```
+
+```python
+class A:
+	def s1(self):
+		print("s1")
+class B(A):
+	def s2(self):
+		print("s2")
+class C(A):
+	def s3(self):
+		print("s3")
+class D(B):
+	def s4(self):
+		print("s4")
+class E(C):
+	def s5(self):
+		print("s5")
+class F(C):
+	def s6(self):
+		print("s6")
+```
+You get the idea
+
+### `__super__` Method
+
+The `super()` function is used to call methods from a parent class. It allows you to access inherited methods that have been overridden in a child class.
+
+Lets consider the following programm from [[02 Academics/Btech/S7/Python For Engineers/Class Notes\|Class Notes]] 
+
+<div class="transclusion internal-embed is-loaded"><a class="markdown-embed-link" href="/02-academics/btech/s7/python-for-engineers/class-notes/#46ec55" aria-label="Open link"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon lucide-link"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a><div class="markdown-embed">
+
+<div class="markdown-embed-title">
+
+# Class Notes
+
+</div>
+
+
+```python
+"""Create a Person Class and create child class named Student and add graduation year for Parent class and create a clid class ??? """
+
+
+class Person:
+    def __init__(self, fname, lname):
+        self.firstname = fname
+        self.lastname = lname
+
+    def printname(self):
+        print(self.firstname, self.lastname)
+
+
+Nivin = Person("Nivin", "Ravichandran")
+# Nivin.printname()
+
+
+class Student(Person):
+    def __init__(self, fname, lname, year):
+        super().__init__(fname, lname)
+        self.graduationyear = year
+
+    def printname(self):
+	    print(self.firstname,self.lastname,self.graduationyear)
+
+
+Nivin_New = Student("Nivin", "Ravichandran", 2022)
+
+# Nivin_New.printname()
+
+print(Nivin_New.lastname)
+
+
+class New_Gen_Z(Student):
+    def __init__(self, fname, lname, year, age):
+        super().__init__(fname, lname, year)
+        self.age = age
+
+    def printname(self):
+        print(self.firstname, self.lastname, self.graduationyear, self.age)
+
+
+Manual_New = New_Gen_Z("Manu", "Old", 2022, 22)
+
+Manual_New.printname()
+```
+
+</div></div>
+
+the inheritance is like this 
+```mermaid
+graph TB
+A[Person] --> B[Student] --> C[New_Gen_Z]
+```
+Lets consider the first class(parent class) `Person`
+```python
+class Person:
+    def __init__(self, fname, lname):
+        self.firstname = fname
+        self.lastname = lname
+    def printname(self):
+        print(self.firstname, self.lastname)
+Person1 = Person("Some Guy", "PP")
+Person1.printname()
+```
+In that program they are asked to create a child class from the parent class(`Person`) and add graduation year to the child class ,it will be something like this
+```python
+class Student(Person):
+	def __init__(self, fname, lname, year):
+		self.firstname = fname
+		self.lastname = lname
+		self.graduationyear = year
+	def print_details(self):
+		print(f"{self.firstname} {self.lastname} , Graduation Year: {self.graduationyear}")
+student1 = Student("Arun", "PP", 2025)
+student1.print_details()
+```
+it works perfectly fine right ? but you have entirely re written the `__init__` method all over again
+```python
+self.firstname = fname
+self.lastname = lname
+self.graduationyear = year
+```
+but the first attributes `firstname` and `lastname` were already defined in the parent class `Person` . So it is waste to re define them agin there somes the `super()` method
+now look at the following code
+ #completeCode 5
+```python
+class Person:
+    def __init__(self, fname, lname):
+        self.firstname = fname
+        self.lastname = lname
+    def printname(self):
+        print(self.firstname, self.lastname)
+class Student(Person):
+	def __init__(self, fname, lname, year):
+		super().__init__(fname, lname)  
+		self.graduationyear = year
+	def print_details(self):
+		print(
+			self.firstname,  
+		    self.lastname , 
+		    "Graduation Year: ", 
+		    self.graduationyear)
+		    
+student1 = Student("Arun", "PP", 2025)
+student1.print_details()
+```
+
+>[!success]- **Output**
+>```
+>Arun PP Graduation Year:  2025
+>```
+
+This will not seem like much now but if the `__init__` was huge it will start to make a difference. 
+
+To make it more meanig full we are going to modify the method `print_details` to make use of parent method too. 
+
+#completeCode 6
+```python
+class Person:
+    def __init__(self, fname, lname):
+        self.firstname = fname
+        self.lastname = lname
+    def printname(self):
+        return f"{self.firstname}, {self.lastname}"
+class Student(Person):
+	def __init__(self, fname, lname, year):
+		super().__init__(fname, lname)  
+		self.graduationyear = year
+	def print_details(self):
+		print( super().printname(),
+		"Graduation Year: ",
+		self.graduationyear)
+		    
+student1 = Student("Arun", "PP", 2025)
+student1.print_details()
+```
+
+>[!success]- **Output**
+>```
+>Arun, PP Graduation Year:  2025
+>```
+
+if we compare these two codes (`#completeCode 6` and `#completeCode 5`) last one(`#completeCode 6`) is more pythonic[^2] . 
+
+[^2]: writing code in a way that embraces the principles and idioms of the Python programming language. Simply put *making use of all the features* the python provides.
