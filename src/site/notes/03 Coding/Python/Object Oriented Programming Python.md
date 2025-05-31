@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/03-coding/python/object-oriented-programming-python/","created":"2025-05-31T00:55:39.954+05:30","updated":"2025-05-31T23:04:13.503+05:30"}
+{"dg-publish":true,"permalink":"/03-coding/python/object-oriented-programming-python/","created":"2025-05-31T00:55:39.954+05:30","updated":"2025-06-01T01:14:13.151+05:30"}
 ---
 
 # Object Oriented Programming Python
@@ -318,6 +318,8 @@ you will get something like `<__main__.Person object at 0x7bc68371da90>` but wha
 
 Now check this code.
 #completeCode 3
+{ #364ad2}
+
 ```python
 class Person:
 	def __init__(self, name, age):
@@ -328,6 +330,10 @@ class Person:
 Arun = Person("Arun", 23)
 print(Arun) 
 ```
+{ #4e1375}
+
+
+
 
 >[!success]- **Output**
 > ```
@@ -337,6 +343,14 @@ print(Arun)
 Here we have defined a `__str__` method which returns a string when called. 
 
 [^1]: parent class in the sense that from where it is inheriting. 
+
+## Encapsulation
+*Bundling data and methods within a class, restricting direct access to some components.* 
+
+Lets Look at the previous example(`#completeCode 3`).
+![[#^4e1375]]
+
+
 
 ## Inheritance
 As the name says it **inherits** the attributes and methods of the parent class.[^1]
@@ -718,7 +732,7 @@ student1.print_details()
 
 if we compare these two codes (`#completeCode 6` and `#completeCode 5`) last one(`#completeCode 6`) is more pythonic[^2]. 
 
-## Project 1
+
 
 
 
