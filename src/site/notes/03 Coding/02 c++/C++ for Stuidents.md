@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/03-coding/02-c/c-for-stuidents/","tags":["#ai_robot","for_students"],"created":"2025-06-01T04:19:58.756+05:30","updated":"2025-06-01T04:41:54.917+05:30"}
+{"dg-publish":true,"permalink":"/03-coding/02-c/c-for-stuidents/","tags":["#ai_robot","for_students"],"created":"2025-06-01T04:19:58.756+05:30","updated":"2025-06-01T04:56:26.426+05:30"}
 ---
 
 # C++ For Students
@@ -26,30 +26,23 @@
 Basics of all programming languages are almost the same , so if you have already know another programming language just skip this part.
 
 
+>[!todo]- **Programmer Note **
+>1. Compatible OS[^1]  Environment  
+>	- **windows** should be fine but i highly recommend using **wsl** on windows. 
+>	- **Linux** ,i use linux , windows and macos , and i find linux is good for programming, but and when you do advanced stuffs. It easy to install linux in virtual machine or
+>		- Dual boot 
+>		- WSL 
+>		- Cloud  -> Github Codespace etc.
+>2. Editor , i personally use **vim** , **neovim** , **vscode** for coding. But when im just learning something i always tends to use **neovim** because it is light weight and feels good to use. 
+>3. Compiler , **linux** comes pre installed with **[clang](https://clang.llvm.org/)** 
 
 
-There are few things to consider when first starting to code 
-
->[!todo]- Compatible  OS Environment
->- **windows** should be fine but i highly recommend using **wsl** on windows.
->>[!todo]- Test 
->>dsdsd
->>dsdss 
-
-1. Compatible OS[^1] ,
-	- **windows** should be fine but i highly recommend using **wsl** on windows. 
-	- **Linux** i use linux , windows and macos , and i find linux is good for programming , but only when you do advanced stuffs. It easy to install linux in virtual machine or
-		- Dual boot 
-		- WSL 
-		- Cloud  
-2. Editor , i personally use **vim** , **neovim** , **vscode** for coding. But when im just learning something i always tends to use **neovim** because it is light weight and feels good to use. 
-3. Compiler , **linux** comes pre installed with **[clang](https://clang.llvm.org/)** 
  [^1]: OS means operating system, which is the programs that allows you to interract with your computer 
 
 ## First Program 
 When someone try to learn programming language the first thing they write is a **Hello World** program -> more about it [here](https://press.rebus.community/programmingfundamentals/chapter/hello-world/#:~:text=A%20%E2%80%9CHello%2C%20world!%E2%80%9D,very%20first%20program%20people%20write.) 
 
-
+#completeCode 1
 ```cpp
 #include <iostream>  
 using namespace std;  
@@ -64,20 +57,17 @@ int main() {
 - type/copy what is in the snippet[^2] and paste it in the editor 
 - Save it in a file or create a new file for it and give **.cpp** extension 
 - use [GCC](https://gcc.gnu.org/) or any other compiler to compile it. 
-
 >```bash
 > g++ <your_program_name> -o <output_file_name>
 >```
 - Run the program using the command
-
 >```bash
 >./<output_file_name>
 >``` 
-
 - You can use a ide to automate this process if you dont want to deal with the terminal 
 
-> [!Note] 
-> **For Windows CMD**
+> [!Note]-  **For Windows CMD**
+>
 > for windows user `./<output_file_name>` will not work , instead use `.\<output_file_name>` to run the program.
 
 [^2]: Block of code 
@@ -89,6 +79,7 @@ Hello World!
 
 
 ### Explenation 
+
 ```cpp
 #include <iostream>  
 ```
@@ -99,9 +90,9 @@ using namespace std;
 ```
 
 - `using namespace std` means that we can use names for objects and variables from the standard library.
-  - if not `std::cout` 
+  - if you dont include the `using namespace std` you will be doing `std::cout` instead of just typing `cout`  
 For example 
-
+#completeCode 2
 ```cpp
 #include <iostream>
 using namespace std;
@@ -112,6 +103,7 @@ int main(){
 
 if `using namespace std` is not included the above program will become
 
+#completeCode 3 
 ```cpp
 #include <iostream>
 int main(){
@@ -135,11 +127,12 @@ g++ program_name.cpp -o bin_file_name
 *I have used [Vim](https://www.vim.org/) as the text editor , which is the default editor for linux and [g++](https://www.geeksforgeeks.org/compiling-with-g-plus-plus/) for compiling*
 
 ## Printing
+*Displaying something on the terminal.*
 
+#completeCode 4
 ```cpp
 #include <iostream>  
 using namespace std;  
-  
 int main() {  
   cout << "Hello World!" << endl;  
   return 0;  
@@ -166,7 +159,7 @@ World!
 
 ![Screenshot 2025-05-13 at 12.25.29 PM.png](/img/user/03%20Coding/02%20c++/attachments/Screenshot%202025-05-13%20at%2012.25.29%20PM.png)
 ### Comments
-
+*Comments will be excluded by the compiler.*
 ```cpp
 // This is a comment in c++
 ```
@@ -178,8 +171,8 @@ This is a multi-line comment in c++
 
 ## Variables
 a variable is a **named storage** location in the computer's memory that holds a value.
-#example 
 
+#example 
 ```cpp
 int a = 10;
 double b = 10.10;
@@ -188,7 +181,6 @@ const char* some_string = "Hello World";
 std::string some_another_string = "Hello, world";
 bool something = false; 
 ```
-
 
 ![Screenshot 2025-05-13 at 12.28.23 PM.png](/img/user/03%20Coding/02%20c++/attachments/Screenshot%202025-05-13%20at%2012.28.23%20PM.png)
 a variable in the sense that their value can be changed during the execution of the program. 
@@ -258,7 +250,6 @@ wchar_t x = L"😅";
 // Boolean  (0 -> false , 1 -> true)
 bool isComplete = true ;
 bool isComplete = 1 ;
-
 ```
 
 --- 
@@ -289,25 +280,29 @@ int main(){
     print_size(sizeof(wchar_t)) ; 
 }
 ```
-```op
-Integers
-----------
-4 bytes ; 32bits
-2 bytes ; 16bits
-8 bytes ; 64bits
-8 bytes ; 64bits
-----------
-floating point
-----------
-4 bytes ; 32bits
-8 bytes ; 64bits
-16 bytes ; 128bits
-----------
-Character
-----------
-1 bytes ; 8bits
-4 bytes ; 32bits
-```
+
+
+>[!success]- **Output**
+>```
+>Integers
+>----------
+>4 bytes ; 32bits
+>2 bytes ; 16bits
+>8 bytes ; 64bits
+>8 bytes ; 64bits
+>----------
+>floating point
+>----------
+>4 bytes ; 32bits
+>8 bytes ; 64bits
+>16 bytes ; 128bits
+>----------
+>Character
+>----------
+>1 bytes ; 8bits
+>4 bytes ; 32bits
+>```
+
 
 - size of `bool` is 1 bit 
 
@@ -321,7 +316,7 @@ Character
 #### Arrays
 
 ```cpp
- int a[] = {1, 2, 3};               
+int a[] = {1, 2, 3};               
 int b[3] = {1, 2, 3};
 char c[] = "abc";
 char d[] = {'a', 'b', 'c'}; 
@@ -360,16 +355,19 @@ int main() {
  
 ```
 
-```op
-1 2 3 
-1 2 3 
-a b c  
-a b c 
-a b c
-```
+>[!success]- **Output**
+>```
+>1 2 3 
+>1 2 3 
+>a b c  
+>a b c 
+>a b c
+>```
+
+
 
 ### Pointers
-A more notes of pointer can be found [here](https://aruncs31s-notes-vercel.vercel.app/03-coding/01-c/pointers/)
+A more notes of pointer can be found here -> [[03 Coding/01 C/Pointers\|Pointers]]
 
 ```cpp
 type* pointer_name;
