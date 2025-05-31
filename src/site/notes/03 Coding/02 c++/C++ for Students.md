@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/03-coding/02-c/c-for-students/","tags":["#ai_robot","for_students"],"created":"2025-06-01T04:19:58.756+05:30","updated":"2025-06-01T05:14:36.883+05:30"}
+{"dg-publish":true,"permalink":"/03-coding/02-c/c-for-students/","tags":["#ai_robot","for_students"],"created":"2025-06-01T04:19:58.756+05:30","updated":"2025-06-01T05:19:48.135+05:30"}
 ---
 
 # C++ For Students
@@ -14,11 +14,7 @@
 
 
 # TODO 
-| File                                                       |
-| ---------------------------------------------------------- |
-| [[03 Coding/02 c++/C++ for Students\|C++ for Students]] |
-
-{ .block-language-dataview}
+What
 ```tasks
 not done 
 path includes C++ for Students
