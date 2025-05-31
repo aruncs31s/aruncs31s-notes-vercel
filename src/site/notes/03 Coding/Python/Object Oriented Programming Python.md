@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/03-coding/python/object-oriented-programming-python/","created":"2025-05-31T00:55:39.954+05:30","updated":"2025-05-31T04:15:36.813+05:30"}
+{"dg-publish":true,"permalink":"/03-coding/python/object-oriented-programming-python/","created":"2025-05-31T00:55:39.954+05:30","updated":"2025-05-31T14:20:21.413+05:30"}
 ---
 
 # Object Oriented Programming Python
@@ -48,7 +48,29 @@
 **Object**: Is an instance of a class
 
 ## Class  and Objects
-A class consists of set of attributes and methods. 
+*A class consists of set of attributes and methods.* 
+So if you did a little bit of python before you might have already seen classes and objects , you might not realize but when you use basic things like `x = 5` in that `x` is an object of class `int`. To test the theory do the following
+
+```python
+print(type(1)) # class 'int'
+print(type("Hello")) # class 'str'
+print(type(1.5)) # class 'float'
+```
+{ #341f6e}
+
+
+>[!success]- **Output**
+>```
+><class 'int'>
+><class 'str'>
+><class 'float'>
+>```
+
+
+
+Now how can we create new classes? Look at the following
+
+
 #example :
 
 ```python
@@ -90,6 +112,131 @@ P2 = Person("Arun Again",24)
 P1.print_age()  
 ```
 { #caffc4}
+
+
+And if you now do  the `type()` thing herer you get something like `__main__.Person` which means it is a class named `Person` in the current module `__main__`. 
+```python
+print(type(P2))
+```
+
+
+>[!example]- Extra
+>```python
+>def fn():
+>	pass
+>print(type(fn))  # <class 'function'>
+>```
+
+
+### Methods
+*Method is a function that belongs to a class.* 
+
+Consider this previous example ![[#^341f6e]] if these `str` , `int` and `float` are classes , do they have methods? Yes
+
+<div class="transclusion internal-embed is-loaded"><a class="markdown-embed-link" href="/02-academics/btech/s7/python-for-engineers/class-notes/#strings" aria-label="Open link"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon lucide-link"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a><div class="markdown-embed">
+
+<div class="markdown-embed-title">
+
+# Class Notes
+
+</div>
+
+
+##### Strings
+
+1. `.center()`
+
+```python
+s ='Hello'
+print(s.center(30))
+
+# print ** before and after
+print(s.center(30, "*"))
+```
+
+2. Is alpha
+   > Returns `True` is `all` letters are `Alphabets`
+
+```python
+# return true if it is alpha
+print(s.isalpha())
+
+# Output
+# True
+```
+
+3. `.isdigit()`
+   > Return `True` only if the string contains all digits
+
+```python
+# Return false
+print(s.isdigit())
+
+s = 5
+print(str(s).isdigit())
+```
+
+3. `.count()`
+
+```python
+s = "Hi hi hi hi "
+print(s.count("i"))
+print(s.count("hi"))
+# output
+# 4
+# 3
+```
+
+4. `.endswith()`
+
+> Returns true if string ends with the provided character
+
+```python
+print(s.endswith("hi")) # Returns true if string ends with the provided character
+
+```
+
+5. `str.find()`
+   > Returns the starting location of the given subsequence
+
+```python
+print(s.find("Hi"))
+# output
+# 0
+```
+
+6. `.join()`
+   > Contatinates 2 strings
+
+```python
+a = "Hello "
+b = "Sir"
+c = [a, b]
+print(" ".join(c))
+print("*".join(c))
+# output
+# Hello Sir
+# Hello *Sir
+```
+
+7. `.lower()`
+
+```python
+a = "HELLo"
+print(a.lower())
+# output
+# hello
+```
+
+- [ ] In and Not in operator
+
+
+</div></div>
+
+You can see that there are lots of methods available for `str` class. If you check [this](https://docs.python.org/3/library/stdtypes.html) you can get lots of examples of methods available for different builtin types. 
+
+
+
 
 
 ### Initializer 
