@@ -1,79 +1,19 @@
 ---
-{"dg-publish":true,"permalink":"/03-coding/02-c/c-for-stuidents/","tags":["#ai_robot","for_students"],"created":"2025-06-01T04:19:58.756+05:30","updated":"2025-06-01T04:33:13.102+05:30"}
+{"dg-publish":true,"permalink":"/03-coding/02-c/c-for-stuidents/","tags":["#ai_robot","for_students"],"created":"2025-06-01T04:19:58.756+05:30","updated":"2025-06-01T04:34:54.288+05:30"}
 ---
 
 # C++ For Students
 
 >[!Note]- **Before**
 >Before reading this there are something to rememeber
->1. Notes are entirely made usng 
-<div class="transclusion internal-embed is-loaded"><div class="markdown-embed">
-
-
-
-
-
-### Plugins
-
-- [[06 OS/Tools/Tools/Obsidian/Canvas Mindmap\|Canvas Mindmap]]
-- [[06 OS/Tools/Tools/Obsidian/Data View\|Data View]]
-- [[06 OS/Tools/Tools/Obsidian/Callouts\|Callouts]]
-- [[06 OS/Tools/Tools/Obsidian/Modular CSS Layout for Obsidian\|Modular CSS Layout for Obsidian]]
-#### Drawings
-
-[source](https://support.typora.io/Draw-Diagrams-With-Markdown/)
-
-##### Multi Coulmn layout
-- [ ] Need to check out the following pages 
-
-
-
-- https://www.reddit.com/r/ObsidianMD/comments/1efwryy/someone_knows_how_to_make_my_obsidian_look_like/
-- https://github.com/efemkay/obsidian-modular-css-layout/tree/main?tab=readme-ov-file#installation--download-and-enable
-- https://github.com/Mara-Li/obsidian-snippet-downloader
-- https://github.com/r-u-s-h-i-k-e-s-h/Obsidian-CSS-Snippets/tree/Collection?tab=readme-ov-file
-
-
-
-> [!multi-column]
->
->> [!note]+ Use Case
->> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
->> ##### User Case Background
->> Vitae nunc sed velit dignissim sodales. In cursus turpis massa tincidunt dui ut ornare lectus.
->
->> [!warning]+ Resources
->> #### Requirement
->> - Lorem ipsum dolor sit amet
->> - Vitae nunc sed velit dignissim sodales.
->> - In cursus turpis massa tincidunt dui ut ornare lectus.
->
->> [!todo]+
->> - [x] Define Use Case
->> - [ ] Craft User Story
->> - [ ] Develop draft sketches
-
-## Icon Links Dashboard using `[!multi-column|center-fixed-small]`
-
-
-
-> [!multi-column]
->
->> [!note|wide-3]+ Work
->> your notes or lists here. using markdown formatting
->
->> [!warning|wide-2]+ Personal
->> your notes or lists here. using markdown formatting
->
->> [!summary|min-5]+ Charity
->> your notes or lists here. using markdown formatting
-
-
-</div></div>
- and if you want to execute codes on the go you can just install the Obsidian app from [here](https://obsidian.md/download) and the extension [Excecute code](https://github.com/twibiral/obsidian-execute-code). 
+>1. Notes are entirely made usng [[06 OS/Tools/Tools/Obsidian/Obsidian\|Obsidian]] and if you want to execute codes on the go you can just install the Obsidian app from [here](https://obsidian.md/download) and the extension [Excecute code](https://github.com/twibiral/obsidian-execute-code). 
 >2. There are expandable callouts which will have a `>` symbol after their tilte like this one and they can be extended, to see the full content 
 >3. Output of a programm will be inside a collapsed callout 
 >4. Feel free to correct the error and send a pr to [this](https://github.com/aruncs31s/Notes) repo 
+# Basics
+
+
+
 
 
 Each Code snippet provided here will independently ie you can just copy paste the code and it will just run. 
