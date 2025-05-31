@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/03-coding/python/object-oriented-programming-python/","created":"2025-05-31T00:55:39.954+05:30","updated":"2025-06-01T01:14:13.151+05:30"}
+{"dg-publish":true,"permalink":"/03-coding/python/object-oriented-programming-python/","created":"2025-05-31T00:55:39.954+05:30","updated":"2025-06-01T01:36:32.382+05:30"}
 ---
 
 # Object Oriented Programming Python
@@ -347,8 +347,54 @@ Here we have defined a `__str__` method which returns a string when called.
 ## Encapsulation
 *Bundling data and methods within a class, restricting direct access to some components.* 
 
-Lets Look at the previous example(`#completeCode 3`).
-![[#^4e1375]]
+Lets Look at the previous example(`#completeCode 3`). 
+```python
+class Person:
+	def __init__(self, name, age):
+		self.name = name
+		self.age = age
+Arun = Person("Arun", 23)
+arun_age = Arun.age
+```
+
+```python
+print(arun_age)  # 23
+```
+>[!success]- **Output**
+>```
+>23
+>```
+
+In this you were able to access the attributes `age` by directly using `<object_name><method_operator><attribute_name>` (`Arun.age`) . Well in theory **encapsulation** means *restricting direct access* to some attributes. 
+Now look at the following code . I have modified only the attributes names anadded a **double underscore** as a prefix to names.( i've just changed `self.name` to `self.__name` and `self.age` to `self.__age`. )
+```python
+class Person:
+	def __init__(self, name, age):
+		self.__name = name
+		self.__age = age
+```
+
+Imagine, you want to access `Arun`'s age , and you do something like this
+```python
+arun_age = Arun.__age
+print(arun_age)
+```
+
+>[!success]- **Output**
+>```
+>'Person' object has no attribute '__age'
+>```
+
+this error message is actually a `AttributeError` which means that the attribute you are tring to acess is private or that attribute is not exist . And renaming variable like this makes them private and it is called **name mangling**. But actually there is a way to access them even if they are private
+
+```python
+arun_age = Arun._Person__age
+print(arun_age)
+```
+>[!success]- **Output**
+>```
+>23
+>```
 
 
 
