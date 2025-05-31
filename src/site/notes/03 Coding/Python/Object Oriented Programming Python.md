@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/03-coding/python/object-oriented-programming-python/","created":"2025-05-31T00:55:39.954+05:30","updated":"2025-06-01T01:36:32.382+05:30"}
+{"dg-publish":true,"permalink":"/03-coding/python/object-oriented-programming-python/","created":"2025-05-31T00:55:39.954+05:30","updated":"2025-06-01T02:10:24.214+05:30"}
 ---
 
 # Object Oriented Programming Python
@@ -10,7 +10,7 @@
 >In treats real-world entities as objects and groups related data and functionality together. In traditional programming languages like [[03 Coding/01 C/C\|C]] the data and functions are seperate and treated differently but in OOP they are grouped together as objects. 
 
 >[!info]- Why Object Oriented Programming?
->In my personal opinion when dealing with real word entities or *things* in general oop makes so much sense. Consider the following 
+>In my personal opinion when dealing with real world entities or *things* in general oop makes so much sense. Consider the following 
 >You have these functions  
 >```c
 >int get_age();
@@ -65,7 +65,6 @@ print(type(1.5)) # class 'float'
 ><class 'str'>
 ><class 'float'>
 >```
-
 
 
 **Now how can we create new classes?** Look at the following
@@ -345,7 +344,8 @@ Here we have defined a `__str__` method which returns a string when called.
 [^1]: parent class in the sense that from where it is inheriting. 
 
 ## Encapsulation
-*Bundling data and methods within a class, restricting direct access to some components.* 
+**Def:** *Bundling data and methods within a class, restricting direct access to some components.* 
+**Why:** There are many resons to restrict acess to objects internal data , which results in better integrity and all that. 
 
 Lets Look at the previous example(`#completeCode 3`). 
 ```python
@@ -396,7 +396,31 @@ print(arun_age)
 >23
 >```
 
+>[!Summary]
+> - Encapsulation is a way to restrict direct access to some attributes.
+> - adding `__` to the beginning of the attribute name makes it private.
+> - You can access private attributes by using `_ClassName__attribute_name` syntax. (Not recommented) 
 
+Instead you should do something like this 💯 , Which is best practice.
+```python
+class Person:
+	def __init__(self, name, age):
+		self.__name = name
+		self.__age = age
+	def get_age(self):
+		return self.__age
+Arun = Person("Arun", 23)
+arun_age = Arun.get_age()
+print(arun_age)
+```
+
+>[!success]- **Output**
+>```
+>23
+>```
+
+>[!important] private methods
+>You can also make methos private to just add the `__` to the beginning of the method name.
 
 ## Inheritance
 As the name says it **inherits** the attributes and methods of the parent class.[^1]
@@ -780,6 +804,34 @@ if we compare these two codes (`#completeCode 6` and `#completeCode 5`) last one
 
 
 
+
+## Polymorphism
+*Objects of different classes responding to the same method call in class-specific ways.*
+
+Lets take the classic example of area of shapes
+```python
+class Rectange:
+	def __init__(self, length, breadth):
+		self.length = length
+		self.breadth = breadth
+	def area(self):
+		return self.length * self.breadth
+class Circle:
+	def __init__(self, radius):
+		self.radius = radius
+	def area(self):
+		return 3.14 * self.radius * self.radius
+R1 = Rectange(3,4)
+C1 = Circle(3)
+print(R1.area())  
+print(C1.area())  
+```
+
+>[!success]- **Output**
+>```
+>12
+>28.259999999999998
+>```
 
 
 
