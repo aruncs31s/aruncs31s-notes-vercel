@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/03-coding/python/object-oriented-programming-python/","created":"2025-05-31T00:55:39.954+05:30","updated":"2025-05-31T23:02:43.667+05:30"}
+{"dg-publish":true,"permalink":"/03-coding/python/object-oriented-programming-python/","created":"2025-05-31T00:55:39.954+05:30","updated":"2025-05-31T23:04:13.503+05:30"}
 ---
 
 # Object Oriented Programming Python
@@ -716,6 +716,12 @@ student1.print_details()
 >Arun, PP Graduation Year:  2025
 >```
 
-if we compare these two codes (`#completeCode 6` and `#completeCode 5`) last one(`#completeCode 6`) is more pythonic[^2] . 
+if we compare these two codes (`#completeCode 6` and `#completeCode 5`) last one(`#completeCode 6`) is more pythonic[^2]. 
+
+## Project 1
+
+
+
+
 
 [^2]: writing code in a way that embraces the principles and idioms of the Python programming language. Simply put *making use of all the features* the python provides.
