@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/03-coding/python/object-oriented-programming-python/","created":"2025-05-31T00:55:39.954+05:30","updated":"2025-06-01T02:10:24.214+05:30"}
+{"dg-publish":true,"permalink":"/03-coding/python/object-oriented-programming-python/","created":"2025-05-31T00:55:39.954+05:30","updated":"2025-06-01T02:43:24.964+05:30"}
 ---
 
 # Object Oriented Programming Python
@@ -833,7 +833,24 @@ print(C1.area())
 >28.259999999999998
 >```
 
+You can see that we are using the same method `.area()` for both `Rectangle` and `Circle` classes, but they return different results based on their specific implementations or we can they the act based on which class they are this is know as **polymorphism** . 
 
+One of the usefull thing about **polymorphism** is that you dont have to use/remember different method names , just by naming whats suits the most like `area` `circumstances` and call without thinking , ie. you dont have to care about if it is a `circle` or `Rectangle` it will work as expected. 
 
+## Abstraction
+*Hiding complex implementation details and showing only the essential features of an object.*
+
+In **Abstraction** the programmer hides complex implementation(the step by step procedure) and shows only what is necessary . For example consider the following program 
+```python
+from math import sqrt
+print(sqrt(25))
+```
+
+>[!success]- **Output**
+>```
+>5
+>```
+
+the only thing you need to know is that there is a function alled `sqrt()` which is provided by the **module** `math` and the `sqrt()` function will return the square root of the number you pass to it. As time progresses you will learn about a huge number of functions anmd use it to get you job done , and if you are lucky you will make a module that will be used by others. And when making that module , you will make sure that it is super easy to work with  and you will  use small function names like `put()` `get()` something like that . And abstraction does the same thing. You might have a hundred lines under the funtion `put()` but in a user perspective you only have to care about what are the argumens that the function is expecting and what it will return, that in theory is **Abstraction**
 
 [^2]: writing code in a way that embraces the principles and idioms of the Python programming language. Simply put *making use of all the features* the python provides.
