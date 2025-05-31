@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/03-coding/python/object-oriented-programming-python/","created":"2025-05-31T00:55:39.954+05:30","updated":"2025-05-31T14:20:21.413+05:30"}
+{"dg-publish":true,"permalink":"/03-coding/python/object-oriented-programming-python/","created":"2025-05-31T00:55:39.954+05:30","updated":"2025-05-31T22:24:34.485+05:30"}
 ---
 
 # Object Oriented Programming Python
@@ -34,7 +34,7 @@
 >get_date_of_birth(&person1)
 >print_details(&person1)
 >```
->And in oop we do something like, trust me dealing with pointers is hard for starters
+>And in oop we do something like following, trust me dealing with pointers is hard for starters
 >```python
 >person.get_name()
 >person.get_age()
@@ -68,8 +68,13 @@ print(type(1.5)) # class 'float'
 
 
 
-Now how can we create new classes? Look at the following
-
+**Now how can we create new classes?** Look at the following
+```python
+class Person:
+	def print_age(self,age):
+		print(f"Age is {age}")  # Method
+```
+This defines a class named `Person` with a method `print_age`. But in python most of the time when your creatiing a class you will also define an `__init__` method which is called the **initializer**. It is used to initialize the attributes of the class. so the following example is more appropriate. 
 
 #example :
 
@@ -442,3 +447,78 @@ Buddy.rescue()
 >```
 
 ### Types of Inheritance
+1. Single Inheritance: A class inherits from one parent class.
+2. Multiple Inheritance: A class inherits from multiple parent classes.
+3. Multilevel Inheritance: A class inherits from another class which in turn inherits from another class like a --> b --> c.
+4. Hierarchical Inheritance: Multiple classes inherit from a single parent class.
+5. Hybrid Inheritance: A combination of two or more types of inheritance.
+#### Single Inheritance
+```mermaid
+graph TB
+A[A] --> B[B]
+```
+```python
+class A:
+	def some_method(self):
+		print("Some Method")
+class B(A):
+	def some_another_method(self):
+		print("Some Another Method")
+```
+
+#### Multiple Inheritance
+```mermaid
+graph TB
+A & B --> C
+```
+
+```python
+class A:
+	def some_method(self):
+		print("Some Method")
+class B:
+	def some_another_method(self):
+		print("Some Another Method")
+class C(A, B): 
+	def some_yet_another_method(self):
+		print("Some Yet Another Method")
+```
+
+#### Multilevel Inheritance
+```mermaid
+graph TB
+A --> B --> C
+```
+
+```python
+class A:
+	def some_method(self):
+		print("Some Method")
+class B(A):
+	def some_another_method(self):
+		print("Some Another Method")
+class C(B): 
+	def some_yet_another_method(self):
+		print("Some Yet Another Method")
+```
+
+#### Hierarchical Inheritance
+```mermaid
+graph TB
+A --> B & C & D
+```
+
+```python
+class A:
+	def some_method(self):
+		print("Some Method")
+class B(A):
+	def some_another_method(self):
+		print("Some Another Method")
+class C(A): 
+	def some_yet_another_method(self):
+		print("Some Yet Another Method")
+class D(A):
+	def again_some_method(self):
+		print("Again Some Method")
+```
