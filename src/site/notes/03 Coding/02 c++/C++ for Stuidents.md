@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/03-coding/02-c/c-for-stuidents/","tags":["#ai_robot","for_students"],"created":"2025-06-01T04:19:58.756+05:30","updated":"2025-06-01T04:34:54.288+05:30"}
+{"dg-publish":true,"permalink":"/03-coding/02-c/c-for-stuidents/","tags":["#ai_robot","for_students"],"created":"2025-06-01T04:19:58.756+05:30","updated":"2025-06-01T04:41:54.917+05:30"}
 ---
 
 # C++ For Students
@@ -7,16 +7,14 @@
 >[!Note]- **Before**
 >Before reading this there are something to rememeber
 >1. Notes are entirely made usng [[06 OS/Tools/Tools/Obsidian/Obsidian\|Obsidian]] and if you want to execute codes on the go you can just install the Obsidian app from [here](https://obsidian.md/download) and the extension [Excecute code](https://github.com/twibiral/obsidian-execute-code). 
->2. There are expandable callouts which will have a `>` symbol after their tilte like this one and they can be extended, to see the full content 
->3. Output of a programm will be inside a collapsed callout 
->4. Feel free to correct the error and send a pr to [this](https://github.com/aruncs31s/Notes) repo 
+>2. Each Code snippet  marked `#completeCode`   will run independently ie, you can just copy paste the code and it will just run. 
+>3. There are expandable callouts which will have a `>` symbol after their tilte like this one and they can be extended, to see the full content 
+>4. Output of a programm will be inside a collapsed callout 
+>5. Feel free to correct the error and send a pr to [this](https://github.com/aruncs31s/Notes) repo 
+
+
 # Basics
 
-
-
-
-
-Each Code snippet provided here will independently ie you can just copy paste the code and it will just run. 
 - First program
 - Printing 
 - Variables 
@@ -27,7 +25,17 @@ Each Code snippet provided here will independently ie you can just copy paste th
 ##  Introduction 
 Basics of all programming languages are almost the same , so if you have already know another programming language just skip this part.
 
+
+
+
 There are few things to consider when first starting to code 
+
+>[!todo]- Compatible  OS Environment
+>- **windows** should be fine but i highly recommend using **wsl** on windows.
+>>[!todo]- Test 
+>>dsdsd
+>>dsdss 
+
 1. Compatible OS[^1] ,
 	- **windows** should be fine but i highly recommend using **wsl** on windows. 
 	- **Linux** i use linux , windows and macos , and i find linux is good for programming , but only when you do advanced stuffs. It easy to install linux in virtual machine or
