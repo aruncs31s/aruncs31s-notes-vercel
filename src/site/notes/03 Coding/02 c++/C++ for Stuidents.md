@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/03-coding/02-c/c-for-stuidents/","tags":["#ai_robot","for_students"],"created":"2025-06-01T04:19:58.756+05:30","updated":"2025-06-01T04:30:31.875+05:30"}
+{"dg-publish":true,"permalink":"/03-coding/02-c/c-for-stuidents/","tags":["#ai_robot","for_students"],"created":"2025-06-01T04:19:58.756+05:30","updated":"2025-06-01T04:33:13.102+05:30"}
 ---
 
 # C++ For Students
@@ -74,11 +74,6 @@
 >2. There are expandable callouts which will have a `>` symbol after their tilte like this one and they can be extended, to see the full content 
 >3. Output of a programm will be inside a collapsed callout 
 >4. Feel free to correct the error and send a pr to [this](https://github.com/aruncs31s/Notes) repo 
-
-
-
->[!Note]- **After**
->After reading this go to [[Intermediate C++ for students \|Intermediate C++ for students ]]
 
 
 Each Code snippet provided here will independently ie you can just copy paste the code and it will just run. 
