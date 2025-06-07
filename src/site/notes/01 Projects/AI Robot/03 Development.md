@@ -393,7 +393,7 @@ $$
 ### Tests
 | File                                                       | ID                                            | start | stop                              | Start ms | Stop ms  | DC |
 | ---------------------------------------------------------- | --------------------------------------------- | ----- | --------------------------------- | -------- | -------- | -- |
-| [[01 Projects/AI Robot/03 Development\|03 Development]] | <ul><li>RA3</li><li>RA1</li><li>LA1</li></ul> | 76    | <ul><li>573</li><li>573</li></ul> | 370.88   | 2.796 ms | \- |
+| [[01 Projects/AI Robot/03 Development\|03 Development]] | <ul><li>LA1</li><li>RA3</li><li>RA1</li></ul> | 76    | <ul><li>573</li><li>573</li></ul> | 370.88   | 2.796 ms | \- |
 
 { .block-language-dataview}
 
@@ -526,10 +526,23 @@ print(f"Response: {response.text}")
 [servo:: LA1]
 [pin:: 0]
 [initial_position:: 25]
+![Pasted image 20250608024100.png](/img/user/01%20Projects/AI%20Robot/attachements/Pasted%20image%2020250608024100.png)
 
-![Pasted image 20250608023324.png](/img/user/01%20Projects/AI%20Robot/attachements/Pasted%20image%2020250608023324.png)
 
+- Orientation X -> Z , Z -> -X 
+$$
+\begin{bmatrix}
+1 & 0 & 0  \\
+0 & 1 & 0 \\
+0 & 0 & 1 
+\end{bmatrix} \to 
+\begin{bmatrix}
 
+0 & 0 & 1  \\
+0 & 1 & 0 \\
+-1 & 0 & 0  \\
+\end{bmatrix}
+$$
 
 ##### 1. RA3
 - The servo start to respond at [start:: 76] 
