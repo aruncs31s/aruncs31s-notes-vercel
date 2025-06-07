@@ -61,7 +61,8 @@ lib/
 
 ![Pasted image 20250607214510.png](/img/user/11%20Classes/PlatformIO/attachements/Pasted%20image%2020250607214510.png)
 
-## 
+## Publishing new Lib to Platfom io
+- Create a new `library.json` file with the following contents
 
 ```json
 {
@@ -88,15 +89,15 @@ lib/
 }
 
 ```
-
+- Change the appropriate  contens like `name ` to your own name 
 
 ```
-folder_name
-	- src 
+folder_name/
+	- src/
 		- .cpp
 		- .h
-	- examples 
-	
+	- examples/ 
+library.json
 ```
 
 ## Account Creation
@@ -104,9 +105,7 @@ folder_name
 pio account register -u username -p asdasdsa1@ --firstname Arun --lastname CS
 ```
 
-
-
-#### Platform io lib
+#### Platform io lib structure 
 ```
 robo-movements
 ├── library.json
@@ -135,3 +134,54 @@ project
 └── test
     └── README
 ```
+
+
+#### Publishing New Lib 
+
+- Login to you account  and  publish new Lib using the following 
+
+<div class="transclusion internal-embed is-loaded"><div class="markdown-embed">
+
+
+
+```bash
+pio account login
+pio pkg publish .
+```
+
+</div></div>
+
+
+#### Updating your lib 
+- create a new `git tag` with the same version number number that you given in the `library.json` 
+- then push the `tag` to github 
+
+<div class="transclusion internal-embed is-loaded"><div class="markdown-embed">
+
+
+
+```bash
+git add .
+git commit -m "Release version 1.0.1"
+git tag -a 1.0.1 -m "Version 1.0.1"
+git push origin --tags
+```
+
+</div></div>
+
+- now publish the update 
+
+
+<div class="transclusion internal-embed is-loaded"><div class="markdown-embed">
+
+
+
+```bash
+pio pkg publish .
+```
+
+</div></div>
+
+
+![Pasted image 20250607220807.png](/img/user/11%20Classes/PlatformIO/attachements/Pasted%20image%2020250607220807.png)
+- it will ask for confirmation , check if everything is ok and type `y` and `Enter`
