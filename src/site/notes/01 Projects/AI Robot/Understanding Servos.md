@@ -14,18 +14,20 @@ There are mainly 2 types of motion for a servo motor ,
 - The servo(MG995) moves **Counter Clockwise (Anti-Clockwise , + Ve Direction)** when angle increases 
 
 ![Pasted image 20250608192950.png](/img/user/99%20Files/attachments/Pasted%20image%2020250608192950.png)
-#causeCode
-```cpp
-Servo s1;
-void setup(){
-	s1.attach(some_pin);
-}
-void loop(){
-	for (int i = 0 ; i < 180 ; ++ i){
-		s1.write(i);
-	}
-}
-```{ #d90f88}
+>[!summary]- Code for triggering this behaviour
+>#causeCode
+>```cpp
+>Servo s1;
+>void setup(){
+>	s1.attach(some_pin);
+>}
+>void loop(){
+>	for (int i = 0 ; i < 180 ; ++ i){
+>		s1.write(i);
+>	}
+>}
+>```
+{ #d90f88}
 
 
 
