@@ -3,11 +3,12 @@
 ---
 
 # Development 
+
+
 There are currently few tasks at hand 
 1. Make the Robot Walk 
 2. Then add object avoidance
-3. Add distance sensing
-4. Stream Video through webcam and identify persons.
+3. Stream Video through webcam and identify persons.
 The development have devided into 4 stages( #update ) for the timebeing 
 
 
@@ -15,126 +16,21 @@ The development have devided into 4 stages( #update ) for the timebeing
 - [[#Development Phase 1]] -> making the robot walk 
 
 # Development Phase 0 
-## 1. Understanding Servo Motors
+**Prerequisites**
+- [[01 Projects/AI Robot/Understanding Servos\|Understanding Servos]]
 
-![Pasted image 20250608031545.png](/img/user/01%20Projects/AI%20Robot/attachements/Pasted%20image%2020250608031545.png)
-
-There are mainly 2 types of motion for a servo motor , 
-1. It's body maybe fixed and it rotor can move
-2. Its rotor may be fiex and its body can move 
-there are some things to consider in this both cases 
-#### Fixed Body 
-```yaml
-motion_direction: counter clockwise
-```
-
-> The rotating element is directly attached to the rotor and it will follow the same direction as the rotor. 
-> - Servo Horn is the rotor in this case 
->![Pasted image 20250608032206.png](/img/user/01%20Projects/AI%20Robot/attachements/Pasted%20image%2020250608032206.png)
-
-
-
-Fixed body will be the most common , because it is mostly seen when testing . And when testing we usually write the following
-
-```cpp
-Servo s1;
-void setup(){
-	s1.attach(some_pin);
-}
-void loop(){
-	for (int i = 0 ; i < 180 ; ++ i){
-		s1.write(i);
-	}
-}
-```{ #d90f88}
-
-
-
-We usually observe this motion as something(something attached to the rotor) travels from $\begin{bmatrix}  1 & 0\end{bmatrix} ->\begin{bmatrix}-1 & 0\end{bmatrix}$ 
-
-This movement happens if the **rotor** of the motor is not fixed.  And if someone were to touch the rotor and if there enough friction between the rotor and the finger the body will start to move, and the movement of the body will be in oposite direction. 
-
-> Its a little tricky to find which direction will be the body move. One way to visualize this is , try to imagine if you were pushing a car if you have enough strength the car will move forward and if dont it will stay there , but if the soil is not hard , you will be moving backward. 
-> Now in the case of motors , if we stop a motor , that will create a lot of heat. (i think) which is not good for the motor , thats why we attach weights which is lower than the torque of the motor (i have to verify this sentence) 
-### Fixed Rotor
-```yaml
-motion_direction: clockwise
-```
-In this the rotor is fixed , this is mainly seen in linked motors[^1]
-[^1]: linked motors in the sense that 2 or more motors connected together and they will form a "Z" like structure 
-
-
-First thing we can see is the direction of rotation is opposite,(due to conservation of force? i think) Now lets look at the code again
-
-![[#^d90f88]]
-
-
-
-
----
-
-# Development Phase 1 
-## Intro 
-Our main goal is to make the humanoid robot **walk**. In order to do that we have to do the following thigs first
-![17 servo robot.png|right|300x500](/img/user/01%20Projects/AI%20Robot/03%20Development/attachments/17%20servo%20robot.png)
-
+**Tasks**
 1. Find initial positions of each servos
 	*During the first step it is found that there is some offset about the pulse width.* 
 2. Tweak the servos to get the desired angles .
 3. Integrate the whole part to the code 
-4. Finaly try to make it walk. 
+
+## Intro 
+
+![Pasted image 20250608200611.png](/img/user/99%20Files/attachments/Pasted%20image%2020250608200611.png)
+
 
 Threre are **17** servos in total , each servo can rotate from **0** to **180** degrees , it was not clear at first that the [[08 Electronics/Embedded Systems/Actuators/MG995\|MG995]] can rotate upto angle **180** or not. But later some source like [this](https://components101.com/motors/mg995-servo-motor) show that it is indeed possible to for the [[08 Electronics/Embedded Systems/Actuators/MG995\|servo]] to rotate upto 180.
-
-
-<div class="transclusion internal-embed is-loaded"><a class="markdown-embed-link" href="/01-projects/ai-robot/02-coding/#15f658" aria-label="Open link"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon lucide-link"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a><div class="markdown-embed">
-
-
-
-
-
-</div></div>
-
-{ #3c3d3c}
-
-
----
----
-
-
->[!blank]
->
->>[!blank|left-small]
->>
->>```cpp
->>Robo la1(PIN_LA1, board1);
->>Robo la2(PIN_LA2, board1);
->>Robo la3(PIN_LA3, board1);
->>Robo ra1(PIN_RA1, board1);
->>Robo ra2(PIN_RA2, board1);
->>Robo ra3(PIN_RA3, board1);
->>Robo lh(PIN_LH, board1);
->>Robo rh(PIN_RH, board1);
->>Robo ll1(PIN_LL1, board1);
->>Robo ll2(PIN_LL2, board1);
->>Robo ll3(PIN_LL3, board1);
->>Robo rl1(PIN_RL1, board1);
->>Robo rl2(PIN_RL2, board1);
->>Robo rl3(PIN_RL3, board1);
->>Robo lf(PIN_LF, board1);
->>Robo rf(PIN_RF, board1);
->>```
->
->>[!blank]
->>![Pasted image 20250427002640.png](/img/user/01%20Projects/AI%20Robot/03%20Development/attachments/Pasted%20image%2020250427002640.png)
- 
-
-- There are 17 servo motors in the humanoid robot. 
-- Initially planning to use [pca9685](https://cdn-shop.adafruit.com/datasheets/PCA9685.pdf) 
-- [ ] Have to find the position of all servo motor  
-
-
-
 
 ## 2 PCA9685  as Driver
 
@@ -142,6 +38,7 @@ Threre are **17** servos in total , each servo can rotate from **0** to **180** 
 #define SERVO_MIN  125
 #define SERVO_MAX  625
 ```
+
 This is the value of `SERVOMIN` and `SERVOMAX` found in the internet code , now we have to find the value corresponding to our servo.
 We know the [[01 Projects/AI Robot/02 Coding/PCA9685\|PCA9685]] has a `12bit` **PWM** 
 $$
@@ -203,10 +100,7 @@ void setup() {
 
 ```cpp
 uint16_t get_pulse(uint8_t _angle){
-uint16_t _pulse = map(_angle,SERVO_ANGLE_MIN, SERVO_ANGLE_MAX, SERVO_MIN,SERVO_MAX);
-     Serial.print("Angle: ");Serial.print(_angle);
-     Serial.print(" pulse: ");Serial.println(_pulse);
-     return _pulse;
+ return map(_angle,SERVO_ANGLE_MIN, SERVO_ANGLE_MAX, SERVO_MIN,SERVO_MAX);
   }
 ```
 
@@ -235,8 +129,8 @@ The [[01 Projects/AI Robot/02 Coding/PCA9685\|PCA9685]] has 16 output pins, but 
 | PIN_RA2  | Right arm  | 4     |
 | PIN_RA3  | Right arm  | 5     |
 | PIN_RA3  | Right arm  | 5     |
-| PIN_B1   | Left Hip   | 6     |
-| PIN_B2   | Right Hip  | 7     |
+| PIN_LH   | Left Hip   | 6     |
+| PIN_RH   | Right Hip  | 7     |
 | PIN_LL1  | Left Leg   | 8     |
 | PIN_LL2  | Left Leg   | 9     |
 | PIN_LL3  | Left Leg   | 10    |
@@ -245,26 +139,6 @@ The [[01 Projects/AI Robot/02 Coding/PCA9685\|PCA9685]] has 16 output pins, but 
 | PIN_RL3  | Right Leg  | 13    |
 | PIN_LF   | Left Foot  | 14    |
 | PIN_RF   | Right Foot | 15    |
-
-| Pin Name | Unit  | Value |
-| -------- | ---- | ----- |
-| PIN_LA1      | Left arm  | 0   |
-| PIN_LA2      | Left arm  | 1   |
-| PIN_LA3      | Left arm  | 2   |
-| PIN_RA1      | Right arm | 3   |
-| PIN_RA2      | Right arm | 4   |
-| PIN_RA3      | Right arm | 5   |
-| PIN_RA3      | Right arm | 5   |
-| PIN_B1       | Left Hip  | 6   |
-| PIN_B2       | Right Hip | 7   |
-| PIN_LL1      | Left Leg  | 8   |
-| PIN_LL2      | Left Leg  | 9   |
-| PIN_LL3      | Left Leg  | 10  |
-| PIN_RL1      | Right Leg | 11  |
-| PIN_RL2      | Right Leg | 12  |
-| PIN_RL3      | Right Leg | 13  |
-| PIN_LF       | Left Foot  | 14  |
-| PIN_RF       | Right Foot | 15  |
 { #c18f43}
 
 ```cpp
@@ -288,7 +162,6 @@ The [[01 Projects/AI Robot/02 Coding/PCA9685\|PCA9685]] has 16 output pins, but 
 { #d85d2b}
 
 
-
 ## 3 Finding the initial position of all servos 
  
 $$
@@ -296,13 +169,80 @@ $$
 $$
 **Initial position** in the sense that  the position of the servo when the robot is in the standing position 
 
+### Upper Body
 
-![Pasted image 20250426211133.png|700|600](/img/user/01%20Projects/AI%20Robot/03%20Development/attachments/Pasted%20image%2020250426211133.png)
+![Pasted image 20250608202240.png](/img/user/99%20Files/attachments/Pasted%20image%2020250608202240.png)
 
 
+####  1. LA1 
+- [servo:: LA1]
+- [pin:: 0]
+- [initial_position:: 25]
+- [status:: fine]
+![Pasted image 20250608024100.png](/img/user/01%20Projects/AI%20Robot/attachements/Pasted%20image%2020250608024100.png)
+
+- Orientation X -> Z , Z -> -X 
+- Current orientation $I \to R_{y}(90)$ 
+$$
+\begin{bmatrix}
+1 & 0 & 0  \\
+0 & 1 & 0 \\
+0 & 0 & 1 
+\end{bmatrix} \to 
+\begin{bmatrix}
+0 & 0 & 1  \\
+0 & 1 & 0 \\
+-1 & 0 & 0  \\
+\end{bmatrix}
+$$
+- [rotation:: $R_{-x}(\theta)$]
+
+#### 2. LA2 
+- [servo:: LA2]
+- [pin:: 1]
+- [initial_position:: 10]
+- [status:: not fine]
+#### 3. LA3 
+- [servo:: LA3]
+- [pin:: 2]
+- - [initial_position:: 160]
+- [status:: fine]
+
+#### 4. RA1 
+
+- [pin:: 3] 
+- [servo:: RA1]
+- [initial_position:: 160]
+- The orientation of the servo is changed (z -> x and X -> -Z)
+
+$$
+\begin{bmatrix}
+1 & 0 & 0  \\
+0 & 1 & 0 \\
+0 & 0 & 1 
+\end{bmatrix} \to 
+\begin{bmatrix}
+0 & 0 & -1  \\
+0 & 1 & 0 \\
+1 & 0 & 0  \\
+\end{bmatrix}
+$$
+- [status:: fine]
+- [rotation:: $R_{x}(\theta)$]
+#### 5. RA2 
+
+- [servo:: RA2]
+- [pin:: 4]
+- [initial_position:: 160]
+- [status:: not fine]
+- [rotation:: $R_{z}(\theta)$]
+##### 6. RA3
+- [servo:: RA3]
+- [pin:: 5]
+- [initial_position:: 30]
+- [status:: fine]
 
 
-{ #b7c9fb}
 
 
 ### 3.1 Initial Positions 
@@ -310,33 +250,28 @@ $$
 $$
 \begin{align}
 \theta_{0}& \to \text{Initial Posiotion} \\
-\phi_{0}& \to \text{pulse value correspond to the initial angle (0)}  \to 102(\text{ideal})\\
-\phi_{\infty}& \to \text{pulse value correspond to the final anlge (180)} \to 512(\text{ideal})\\
 \end{align}
 $$
 
 
-{ #tableoneotwo}
-
-
-| Servo | Unit       | $\theta_{0}$ | $\text{when } \theta = 0$  | $\text{when } \theta = \pi$ | $\phi_{0}$  | $\phi_{\infty}$ | $\phi_{k}$ |
-| ----- | ---------- | ------------ | -------------------------- | --------------------------- | ----------- | --------------- | ---------- |
-| LA1   | Left arm   | 25           | BACKWARD(PALM FACING DOWN) | FORWARD(PALM FACING UP)     | yet to find |                 |            |
-| LA2   | Left arm   | 10           | INWARDS(HAND CLOSING)      | OUTWARDS(HANDS OPENING)     |             |                 |            |
-| LA3   | Left arm   | 160          | INWARDS                    | OUTWARDS                    |             |                 |            |
-| RA1   | Right arm  | 160          | UP(FORWARD)                | DOWN(BACKWARD)              |             |                 |            |
-| RA2   | Right arm  | 160          | OUTWARDS(HANDS OPENING)    | INWARDS(HANDS CLOSING)      |             |                 |            |
-| RA3   | Right arm  | 30           | PALM OPENS(OUTWARDS)       | PALM CLOSES(INWARDS)        | 102         | 512             | 170        |
-| B1    | Left Hip   | 102          | OUTWARDS(AWAY FROM BODY)   | INWARDS(TOWARDS BODY)       |             |                 |            |
-| B2    | Right Hip  | 102          | INWARDS(TOWARDS BODY)      | OUTWARDS(AWAY FROM BODY)    |             |                 |            |
-| LL1   | Left Leg   | 25           | BACKWARDS                  | FORWARD                     |             |                 |            |
-| LL2   | Left Leg   | 15           | BACKWARDS                  | FORWARD                     |             |                 |            |
-| LL3   | Left Leg   | 160          | FORWARD                    | BACKWARD                    |             |                 |            |
-| RL1   | Right Leg  | 160          | BACKWARDS                  | FORWARD                     |             |                 |            |
-| RL2   | Right Leg  | 165          | FORWARD                    | BACKWARD                    |             |                 |            |
-| RL3   | Right Leg  |              | BACKWARDS                  | FORWARDS                    |             |                 |            |
-| LF    | Left Foot  | 93           | FOLDS                      | UNFOLDS                     |             |                 | 327        |
-| RF    | Right Foot | 99           | UNFOLDS                    | FOLDS                       |             |                 | 327        |
+| Servo | Unit       | $\theta_{0}$ | $\text{when } \theta = 0$  | $\text{when } \theta = \pi$ |
+| ----- | ---------- | ------------ | -------------------------- | --------------------------- |
+| LA1   | Left arm   | 25           | BACKWARD(PALM FACING DOWN) | FORWARD(PALM FACING UP)     |
+| LA2   | Left arm   | 10           | INWARDS(HAND CLOSING)      | OUTWARDS(HANDS OPENING)     |
+| LA3   | Left arm   | 160          | INWARDS                    | OUTWARDS                    |
+| RA1   | Right arm  | 160          | UP(FORWARD)                | DOWN(BACKWARD)              |
+| RA2   | Right arm  | 160          | OUTWARDS(HANDS OPENING)    | INWARDS(HANDS CLOSING)      |
+| RA3   | Right arm  | 30           | PALM OPENS(OUTWARDS)       | PALM CLOSES(INWARDS)        |
+| B1    | Left Hip   | 102          | OUTWARDS(AWAY FROM BODY)   | INWARDS(TOWARDS BODY)       |
+| B2    | Right Hip  | 102          | INWARDS(TOWARDS BODY)      | OUTWARDS(AWAY FROM BODY)    |
+| LL1   | Left Leg   | 25           | BACKWARDS                  | FORWARD                     |
+| LL2   | Left Leg   | 15           | BACKWARDS                  | FORWARD                     |
+| LL3   | Left Leg   | 160          | FORWARD                    | BACKWARD                    |
+| RL1   | Right Leg  | 160          | BACKWARDS                  | FORWARD                     |
+| RL2   | Right Leg  | 165          | FORWARD                    | BACKWARD                    |
+| RL3   | Right Leg  |              | BACKWARDS                  | FORWARDS                    |
+| LF    | Left Foot  | 93           | FOLDS                      | UNFOLDS                     |
+| RF    | Right Foot | 99           | UNFOLDS                    | FOLDS                       |
 
 ```cpp
 // Servo Vals.h
@@ -350,9 +285,9 @@ $$
 
 
 ### Tests
-| File                                                       | ID                                                        | start | stop                              | Start ms | Stop ms  | DC |
-| ---------------------------------------------------------- | --------------------------------------------------------- | ----- | --------------------------------- | -------- | -------- | -- |
-| [[01 Projects/AI Robot/03 Development\|03 Development]] | <ul><li>LA1</li><li>LA2</li><li>RA3</li><li>RA1</li></ul> | 76    | <ul><li>573</li><li>573</li></ul> | 370.88   | 2.796 ms | \- |
+| File                                                       | ID                                                        | pin                                     | Initial Angle                   | Status                                  | Rotation |
+| ---------------------------------------------------------- | --------------------------------------------------------- | --------------------------------------- | ------------------------------- | --------------------------------------- | -------- |
+| [[01 Projects/AI Robot/03 Development\|03 Development]] | <ul><li>LA1</li><li>LA2</li><li>RA3</li><li>RA1</li></ul> | <ul><li>0</li><li>1</li><li>3</li></ul> | <ul><li>25</li><li>\-</li></ul> | <ul><li>fine</li><li>not fine</li></ul> | \-       |
 
 { .block-language-dataview}
 
@@ -481,21 +416,32 @@ print(f"Response: {response.text}")
 
 
 
-####  1. LA1 
-[servo:: LA1]
-[pin:: 0]
-[initial_position:: 25]
-![Pasted image 20250608024100.png](/img/user/01%20Projects/AI%20Robot/attachements/Pasted%20image%2020250608024100.png)
+#### 7. LH
+- [servo:: LH]
+- [pin:: 6]
+- [initial_position:: 102]
+- [status:: fine]
+- [rotation:: $R_{z}(\theta)$]
+#### 8. RH
+- [servo:: RH]
+- [pin:: 7]
+- [initial_position:: 102]
+- [status:: fine]
+- - [rotation:: $R_{z}(\theta)$]
 
-- Orientation X -> Z , Z -> -X 
+#### 9. LL1
+- [servo:: LL1]
+- [pin:: 8]
+- [initial_position:: 25]
+- [status:: fine]
+- - [rotation:: $R_{-x}(\theta)$]
 $$
-\begin{bmatrix}
+\color{blue} \begin{bmatrix}
 1 & 0 & 0  \\
 0 & 1 & 0 \\
 0 & 0 & 1 
 \end{bmatrix} \to 
 \begin{bmatrix}
-
 0 & 0 & 1  \\
 0 & 1 & 0 \\
 -1 & 0 & 0  \\
@@ -503,107 +449,146 @@ $$
 $$
 
 
-#### 2. LA2 
-[servo:: LA2]
-[pin:: 1]
-[initial_position:: ]
+#### 10. LL2
+- [servo:: LL2]
+- [pin:: 9]
+- [initial_position:: 25]
+- [status:: fine]
+- [rotation:: $R_{-x}(\theta)$]
 
-##### 1. RA3
-- The servo start to respond at [start:: 76] 
-> $76 \to 76\times 4.88 \mu s \to 370.88$
-*[start_ms:: 370.88]*
-{ #7fe3a5}
-
-- also stops to respond at [stop:: 573]
-this means the [servo:: RA3] will repond or goes to $0^{\circ}$ when the pulse width is **.37088 ms**  
-
-It also stops responding at [stop:: 573] -> [stop_ms:: 2.796 ms]
 $$
-573 \to 2.796 ms
-$$
-Which implies 
-$$
-\text{Duty cycle} = 2.796 - .370.88 = 2.42512 ms
-$$
-
-[duty_cyle:: 2.42512 ms ]
-
-- [initial_position:: ]
-
-#ifdefined #linux | #mac
-```bash
-curl "http://192.168.137.142/setServo?id=0&position=76"
-```
-```bash
-curl "http://192.168.137.142/setServo?id=0&position=573"
-```
-#elseif #windows | #Linux | #mac
-```python
-import requests
-
-url = "http://192.168.137.142/setServo"
-
-min_params = {
-    "id": 5,
-    "position": 76
-}
-max_params = {
-	"id" : 5,
-	"position": 573
-}
-
-```
-
-
-```python
-response = requests.get(url, params=min_params)
-print(f"Response: {response.text}")
-```
-```python
-response = requests.get(url, params=max_params)
-print(f"Response: {response.text}")
-```
-
-###### **put to initial**
-```python 
-get_pulse = lambda x: x * (512 - 102 ) /180 + 102
-print(get_pulse(30))
-initial_prop = {
-	"id": 5,
-	"position": get_pulse(30)
-}
-
-response = requests.get(url, params=initial_prop)
-print(f"Response: {response.text}")
-```
-
-
-
-
-
-
-##### 4. RA1 
-- [pin:: 3] 
-- [servo:: RA1]
-- [initial_postion:: 160]
-- The orientation of the servo is changed (z -> x and X -> -Z)
-$$
-\begin{bmatrix}
+\color{blue} \begin{bmatrix}
 1 & 0 & 0  \\
 0 & 1 & 0 \\
 0 & 0 & 1 
 \end{bmatrix} \to 
 \begin{bmatrix}
+0 & 0 & 1  \\
+0 & 1 & 0 \\
+-1 & 0 & 0  \\
+\end{bmatrix}
+\to
+\begin{bmatrix}
+ 0& 0 & -1  \\
+0 & -1 & 0 \\
+-1 & 0 & 0  \\
+\end{bmatrix}
+$$
 
-0 & 0 & -1  \\
+1. First Initial position of Servo 
+
+
+$$
+I = \begin{bmatrix}
+1 & 0 & 0 \\
+0 & 1 & 0  \\
+0 & 0 & 1
+\end{bmatrix}
+$$
+2.  Rotate 90° Around the Y-Axis $Z \to -X$ (**global axis**)
+According to 
+<div class="transclusion internal-embed is-loaded"><a class="markdown-embed-link" href="/08-science/maths/rotations/#36e3d2" aria-label="Open link"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon lucide-link"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a><div class="markdown-embed">
+
+
+
+$
+R_y(\theta) = \begin{bmatrix}
+\cos \theta & 0 & \sin \theta \\
+0 & 1 & 0 \\
+-\sin \theta & 0 & \cos \theta
+\end{bmatrix}
+$
+
+</div></div>
+
+$$
+= \begin{bmatrix}
+0 & 0 & 1 \\
+0 & 1 & 0  \\
+-1 & 0 & 0
+\end{bmatrix}
+$$
+
+
+3. 180° Around the X-Axis (Flips Y and Z Down)  (**global axis**)
+
+$$
+= \begin{bmatrix}
+0 & 0 & 1 \\
+0 & 1 & 0  \\
+-1 & 0 & 0
+\end{bmatrix} \cdot 
+\begin{bmatrix}
+1 & 0 & 0 \\
+0 & \cos (180) & -\sin (180) \\
+0 & \sin (180) & \cos (180)
+\end{bmatrix} = \begin{bmatrix}
+0 & 0 & 1 \\
+0 & 1 & 0  \\
+-1 & 0 & 0
+\end{bmatrix} \cdot  
+\begin{bmatrix}
+1 & 0 & 0 \\
+0 & -1 & 0 \\
+0 & 0 & -1
+\end{bmatrix} = \begin{bmatrix}
+0 & 0 & -1 \\
+0 & -1 & 0 \\
+-1 & 0 & 0
+\end{bmatrix}
+$$
+
+
+#### 11. LL3
+- [servo:: LL3]
+- [pin:: 10]
+- [initial_position:: 160]
+- [status:: fine]
+- [rotation:: $R_{-x}(\theta)$]
+$$
+\color{blue} \begin{bmatrix}
+1 & 0 & 0  \\
+0 & 1 & 0 \\
+0 & 0 & 1 
+\end{bmatrix} \to 
+\begin{bmatrix}
+0 & 0 & 1  \\
+0 & 1 & 0 \\
+-1 & 0 & 0  \\
+\end{bmatrix}
+\to
+\begin{bmatrix}
+0 & 1 & 0  \\
+0 & 0 & -1 \\
+-1 & 0 & 0  \\
+\end{bmatrix}
+$$
+#### 12. RL1 
+- [servo:: RL3]
+- [pin:: 11]
+- [initial_position:: 160]
+- [status:: fine]
+- [rotation:: $R_{x}(\theta)$]
+
+$$
+\color{blue} \begin{bmatrix}
+1 & 0 & 0  \\
+0 & 1 & 0 \\
+0 & 0 & 1 
+\end{bmatrix} \to 
+\begin{bmatrix}
+0 & 0 & 1  \\
 0 & 1 & 0 \\
 1 & 0 & 0  \\
 \end{bmatrix}
 $$
 
-
-
-
+#### 13. RL2
+- [pin:: 12] 
+- [servo:: RL2]
+- [initial_position:: 165]
+- [status:: fine]
+- [rotation:: ]
 ## 4 Movements
 Lets say we want to go from position **a** to **b**. the code will be like this
 ```cpp
